@@ -46,5 +46,7 @@
   "Enter your password (Again)": "Parolanızı tekrar girin",
   "Male":"Erkek",
   "Female":"Kadın",
-  "Other":"Diğer"
+  "Other":"Diğer",
+  "Gender":"Cinsiyet",
+  "Invalid email or password":"Geçersiz email veya parola"
 }

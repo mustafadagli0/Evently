@@ -46,5 +46,7 @@
   "Enter your password (Again)": "Enter your password (Again)",
   "Male":"Male",
   "Female":"Female",
-  "Other":"Other"
+  "Other":"Other",
+  "Gender":"Gender",
+  "Invalid email or password":"Invalid email or password"
 }

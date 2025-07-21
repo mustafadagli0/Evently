@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './login.css'
 import { useTranslation } from "react-i18next";
 import "../i18n";
@@ -6,10 +6,16 @@ import { HiUserCircle } from "react-icons/hi2";
 import { useNavigate } from 'react-router-dom';
 import Favicon from '../assets/favicon.png';
 import { auth, provider, signInWithPopup } from '../firebase';
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 
 function login() {
    const { t, i18n } = useTranslation();
+
+  // State for form inputs and error
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
 const changeLang = (lang) => {
   i18n.changeLanguage(lang);
@@ -17,11 +23,15 @@ const changeLang = (lang) => {
 };
 const navigator = useNavigate();
 
-const handleLogin = () =>{
-  // Burada giriş işlemlerini yapabilirsiniz
-  // Örneğin, kullanıcı adı ve şifre kontrolü yapabilirsiniz
-  // Eğer giriş başarılıysa, ana sayfaya yönlendirebilirsiniz
+const handleLogin = async (e) => {
+  e.preventDefault();
+  setError("");
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
     navigator('/home');
+  } catch (err) {
+    setError(t("Invalid email or password"));
+  }
 }
 const handleForgotPassword = () =>{
     navigator('/forgotPassword');
@@ -64,9 +74,12 @@ const handleGoogleLogin = async (e) => {
                 <form>
            <HiUserCircle style={{width:'150px',height:'150px',position:'absolute',marginTop:'100px',marginLeft:'80px'}}/>
                  
-                    <input className='username' type="text" placeholder={t("Username")} />
-                    <input className='password' type="password" placeholder={t("Password")} />
+                    <input className='username' type="text" placeholder={t("Username or Email")}
+                      value={email} onChange={e => setEmail(e.target.value)} />
+                    <input className='password' type="password" placeholder={t("Password")}
+                      value={password} onChange={e => setPassword(e.target.value)} />
                     <button onClick={handleLogin} className='loginButton' type='submit'>{t("login")}</button>
+                    {error && <div style={{color: 'red', marginTop: '10px'}}>{error}</div>}
                     <a onClick={handleForgotPassword} className='forgotPassword' type='submit'>{t("Forgot Password?")}</a>
 
                     <a className='createAccount' onClick={handleCreateAccount} type='submit'>{t("Create Account?")}</a>

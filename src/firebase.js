@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { getAnalytics } from "firebase/analytics";
+import { getFirestore } from "firebase/firestore"; // Firestore'u ekle
 
 const firebaseConfig = {
   apiKey: "AIzaSyAsRG5cRjH3ffiS7j6fZqcCAaGg-uGpvvk",
@@ -15,8 +15,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
+const db = getFirestore(app); // Firestore instance'ı
 
-const analytics = getAnalytics(app);
-
-// Şu üç değeri dışa aktar
-export { auth, provider, signInWithPopup };
+export { auth, provider, signInWithPopup, db }; // db'yi de export et

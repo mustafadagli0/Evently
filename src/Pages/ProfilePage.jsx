@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ProfilePage.css'
 import Favicon from '../assets/favicon.png';
 import { useTranslation } from "react-i18next";
 import '../i18n';
 import { HiUserCircle } from "react-icons/hi2";
+import { auth } from '../firebase';
+import { db } from '../firebase';
+import { doc, getDoc } from "firebase/firestore";
 
 
 function ProfilePage() {
@@ -28,6 +31,21 @@ function ProfilePage() {
         const handleEventAdd = () => {
           navigator('/eventAdd');
         };
+  const [profile, setProfile] = useState(null);
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      const user = auth.currentUser;
+      if (user) {
+        const docRef = doc(db, "users", user.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setProfile(docSnap.data());
+        }
+      }
+    };
+    fetchProfile();
+  }, []);
   return (
     <>
     <div className="navbar">
@@ -50,10 +68,10 @@ function ProfilePage() {
       <div className='profileCard'>
        <HiUserCircle className='profilePicture'/>
         <div className='profileDetails'>
-          <p><strong>{t("Name")}:</strong> John Doe</p>
-          <p><strong>{t("Email")}:</strong> johndoe@example.com</p>
-          <p><strong>{t("Location")}:</strong> Istanbul, Turkey</p>
-          <p><strong>{t("Member Since")}:</strong> January 2023</p>
+          <p><strong>{t("Name")}:</strong> {profile ? profile.username : "..."}</p>
+          <p><strong>{t("Email")}:</strong> {profile ? profile.email : "..."}</p>
+          <p><strong>{t("Gender")}:</strong> {profile ? profile.gender : "..."}</p>
+          <p><strong>{t("Member Since")}:</strong> {profile ? (profile.createdAt?.toDate ? profile.createdAt.toDate().toLocaleDateString() : profile.createdAt) : "..."}</p>
         </div>
       </div>
     </div>
