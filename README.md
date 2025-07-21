@@ -1,12 +1,70 @@
-# React + Vite
+# Evently
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Evently, kullanıcıların etkinlik oluşturabildiği, etkinlikleri beğenebildiği ve konuma/girilen isme göre arayabildiği modern bir React + Firebase uygulamasıdır.
 
-Currently, two official plugins are available:
+## Özellikler
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Kullanıcı Kayıt ve Giriş:**
+  - E-posta ve şifre ile kayıt ve giriş
+  - Google ile giriş
+  - Şifremi unuttum (reset maili gönderme)
+  - Firebase Authentication ile güvenli oturum yönetimi
 
-## Expanding the ESLint configuration
+- **Profil Sayfası:**
+  - Kullanıcı adı, e-posta, cinsiyet ve üyelik tarihi görüntüleme
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Etkinlikler:**
+  - Etkinlik ekleme (başlık, konum, tarih, saat, açıklama)
+  - Tüm etkinlikleri ana sayfada listeleme
+  - Her etkinlik kartında beğeni (yıldız) butonu ve toplam beğeni sayısı
+  - Sadece giriş yapan kullanıcılar etkinlikleri beğenebilir
+  - En çok beğenilen etkinlikler en üstte gösterilir
+
+- **Arama ve Filtreleme:**
+  - Etkinlik adı veya konumuna göre arama
+  - Küçük/büyük harf ve Türkçe karakter duyarsız arama
+
+- **Korumalı Sayfalar:**
+  - Giriş yapmadan home, profil veya etkinlik ekleme sayfalarına erişilemez
+  - Çıkış yaptıktan sonra tarayıcı geri tuşu ile korumalı sayfalara erişim engellenir
+
+- **Firebase Firestore:**
+  - Etkinlikler ve kullanıcılar Firestore veritabanında saklanır
+  - Beğeni (likes) ve diğer bilgiler gerçek zamanlı güncellenir
+
+## Kurulum
+
+1. **Projeyi klonla:**
+   ```bash
+   git clone <repo-url>
+   cd Evently
+   ```
+2. **Bağımlılıkları yükle:**
+   ```bash
+   npm install
+   ```
+3. **Firebase yapılandırması:**
+   - `src/firebase.js` dosyasındaki Firebase config bilgilerini kendi projenle değiştir.
+   - Firebase Authentication ve Firestore Database’i aktif et.
+4. **Projeyi başlat:**
+   ```bash
+   npm run dev
+   ```
+
+## Kullanım
+- Kayıt ol veya giriş yap.
+- Etkinlik ekle, etkinlikleri beğen, arama yap.
+- Profil sayfanda bilgilerini görüntüle.
+- Çıkış yaptıktan sonra korumalı sayfalara erişemezsin.
+
+## Geliştirme Önerileri
+- Etkinlik detay sayfası
+- Etkinliğe katılma/katılımcı listesi
+- Etkinlik görseli ekleme
+- Kategoriye göre filtreleme
+- Yorumlar ve bildirimler
+- Admin paneli
+
+---
+
+**Evently ile etkinlikleri keşfet, paylaş ve sosyalleş!**
