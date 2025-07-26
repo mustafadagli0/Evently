@@ -4,6 +4,10 @@ Evently, kullanıcıların etkinlik oluşturabildiği, etkinlikleri beğenebildi
 
 ## Özellikler
 
+- **Çoklu Dil Desteği:**
+  - Uygulama İngilizce ve Türkçe olarak kullanılabilir
+  - Sağ üstteki dil menüsünden anında dil değiştirilebilir
+
 - **Kullanıcı Kayıt ve Giriş:**
   - E-posta ve şifre ile kayıt ve giriş
   - Google ile giriş
@@ -56,6 +60,7 @@ Evently, kullanıcıların etkinlik oluşturabildiği, etkinlikleri beğenebildi
 - Etkinlik ekle, etkinlikleri beğen, arama yap.
 - Profil sayfanda bilgilerini görüntüle.
 - Çıkış yaptıktan sonra korumalı sayfalara erişemezsin.
+- Sağ üstteki dil menüsünden İngilizce veya Türkçe arasında geçiş yapabilirsin.
 
 ## Geliştirme Önerileri
 - Etkinlik detay sayfası
