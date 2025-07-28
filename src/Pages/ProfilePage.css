@@ -67,6 +67,7 @@ body{
     cursor: pointer;
 }
 .profileContainer {
+    margin-top: 200px;
     width: 700px;
     height: 100vh;
     display: flex;
@@ -102,4 +103,21 @@ body{
     justify-content: center;
     font-size: 18px;
     margin-left: 20px;
+}
+.editProfileButton{
+    position: relative;
+    background-color: blueviolet;
+    height: 50px;
+    width: 200px;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+.editProfileButton:hover{
+    background-color: white;
+    color: blueviolet;
+    border: 1px solid blueviolet;
 }

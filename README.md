@@ -16,6 +16,7 @@ Evently, kullanıcıların etkinlik oluşturabildiği, etkinlikleri beğenebildi
 
 - **Profil Sayfası:**
   - Kullanıcı adı, e-posta, cinsiyet ve üyelik tarihi görüntüleme
+  - Kullanıcılar artık profil sayfasında isim, e-posta ve cinsiyet bilgilerini güncelleyebilir.
 
 - **Etkinlikler:**
   - Etkinlik ekleme (başlık, konum, tarih, saat, açıklama)

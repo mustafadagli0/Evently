@@ -7,7 +7,7 @@ import '../i18n';
 import { HiUserCircle } from "react-icons/hi2";
 import { auth } from '../firebase';
 import { db } from '../firebase';
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 
 
 function ProfilePage() {
@@ -31,7 +31,12 @@ function ProfilePage() {
         const handleEventAdd = () => {
           navigator('/eventAdd');
         };
+
   const [profile, setProfile] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editUsername, setEditUsername] = useState("");
+  const [editEmail, setEditEmail] = useState("");
+  const [editGender, setEditGender] = useState("");
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -46,6 +51,41 @@ function ProfilePage() {
     };
     fetchProfile();
   }, []);
+
+  const handleSaveProfile = async () => {
+    // 1. Alanlar boş mu kontrol et
+    if (!editUsername.trim() || !editEmail.trim() || !editGender.trim()) {
+      alert("Lütfen tüm alanları doldurun!");
+      return;
+    }
+    try {
+      const user = auth.currentUser;
+      if (!user) {
+        alert("Kullanıcı oturumu bulunamadı!");
+        setIsEditing(false);
+        return;
+      }
+      const userRef = doc(db, "users", user.uid);
+      await updateDoc(userRef, {
+        username: editUsername,
+        email: editEmail,
+        gender: editGender
+      });
+      // Profil state'ini güncelle
+      setProfile(prev => ({
+        ...prev,
+        username: editUsername,
+        email: editEmail,
+        gender: editGender
+      }));
+      setIsEditing(false);
+      alert("Profil başarıyla güncellendi!");
+    } catch (error) {
+      setIsEditing(false);
+      alert("Profil güncellenirken hata oluştu: " + error.message);
+    }
+  };
+
   return (
     <>
     <div className="navbar">
@@ -63,7 +103,7 @@ function ProfilePage() {
     </div>
   
     
-    <div className='profileContainer'>
+    <div style={{display: isEditing ? "none" :"block"}} className='profileContainer'>
      
       <div className='profileCard'>
        <HiUserCircle className='profilePicture'/>
@@ -72,9 +112,57 @@ function ProfilePage() {
           <p><strong>{t("Email")}:</strong> {profile ? profile.email : "..."}</p>
           <p><strong>{t("Gender")}:</strong> {profile ? profile.gender : "..."}</p>
           <p><strong>{t("Member Since")}:</strong> {profile ? (profile.createdAt?.toDate ? profile.createdAt.toDate().toLocaleDateString() : profile.createdAt) : "..."}</p>
+          <button
+  onClick={() => {
+    setEditUsername(profile?.username || "");
+    setEditEmail(profile?.email || "");
+    setEditGender(profile?.gender || "");
+    setIsEditing(true);
+  }}
+  className='editProfileButton'
+>
+  {t("Edit Profile")}
+</button>
+          {isEditing && <div>Düzenleme modundasın!</div>}
         </div>
       </div>
     </div>
+
+    <div style={{display: isEditing ? "block" : "none"}} className='profileContainer'> 
+      <div className='profileCard'>
+        <div className='profileDetails'>
+                  <p><strong>{t("Name")}:</strong> </p>
+                  <input
+                placeholder={profile ? profile.username : "..."}
+                type="text"
+                value={editUsername}
+                onChange={e => setEditUsername(e.target.value)}
+              />
+                  <p><strong>{t("Email")}:</strong> </p>
+                  <input
+                type="email"
+                placeholder={profile ? profile.email : "..."}
+                value={editEmail}
+                onChange={e => setEditEmail? setEditEmail(e.target.value) : editEmail}
+              />
+              <p><strong>{t("Gender")}:</strong></p>
+              
+              <select value={editGender} onChange={e => setEditGender(e.target.value)}>
+                <option value="male">{t("Male")}</option>
+                <option value="female">{t("Female")}</option>
+                <option value="other">{t("Other")}</option>
+              </select>
+
+              <button
+                type="button"
+                onClick={handleSaveProfile}
+                className="editProfileButton">
+                {t("Save")}
+              </button>
+
+          </div>
+        </div>  
+      </div>
     </>
   )
 }

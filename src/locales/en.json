@@ -48,5 +48,7 @@
   "Female":"Female",
   "Other":"Other",
   "Gender":"Gender",
-  "Invalid email or password":"Invalid email or password"
+  "Invalid email or password":"Invalid email or password",
+  "Edit Profile":"Edit Profile",
+  "Save":"Save"
 }

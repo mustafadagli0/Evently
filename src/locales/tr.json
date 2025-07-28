@@ -48,5 +48,7 @@
   "Female":"Kadın",
   "Other":"Diğer",
   "Gender":"Cinsiyet",
-  "Invalid email or password":"Geçersiz email veya parola"
+  "Invalid email or password":"Geçersiz email veya parola",
+  "Edit Profile":"Profili Düzenle",
+  "Save":"Kaydet"
 }
