@@ -118,9 +118,10 @@ function home() {
               date={event.date}
               description={event.description}
               likes={Array.isArray(event.likes) ? event.likes : []}
+              attend={Array.isArray(event.attend) ? event.attend : []}
               user={user}
             />
-        ))}
+          ))}
       </div>
     </>
   )
