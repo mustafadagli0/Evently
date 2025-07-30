@@ -45,24 +45,24 @@ body{
     padding-bottom: auto;     
 }
 
-.dropdown{
-    display: flex;
-    margin-left: 16%;
+ul{
+    width: 30%;
+    margin-right: -10%;
 }
 
-.dropdown ul li{
+ul li{
     display: inline-block;
-    margin-left: 25px;
     list-style: none;
     font-size: medium;
     color: white;
+    margin-left: 3%;
 }
-.dropdown ul li a{
+ul li a{
     word-spacing: 0.01em;
     color: rgb(191, 191, 191);
     transition: 0.5s;
 }
-.dropdown ul li a:hover{
+ul li a:hover{
     color: white;
     cursor: pointer;
 }

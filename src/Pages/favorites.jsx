@@ -80,6 +80,9 @@ function favorites() {
       )
     );
   };
+  const attendedEvents = events.filter(event =>
+    Array.isArray(event.attend) && user && event.attend.includes(user.uid)
+  );
 
   if (user === undefined) return null;
   if (!user) return null;
@@ -110,11 +113,12 @@ function favorites() {
      
       </div>
 
+      <div>
       <div className="eventsContainer">
-        {filteredEvents
-          .slice() // orijinal diziyi bozmamak için kopya al
-          .sort((a, b) => (Array.isArray(b.likes) ? b.likes.length : 0) - (Array.isArray(a.likes) ? a.likes.length : 0))
-          .map(event => (
+        {attendedEvents.length === 0 ? (
+          <p>{t("You have not joined any events yet.")}</p>
+        ) : (
+          attendedEvents.map(event => (
             <EventCard
               key={event.id}
               id={event.id}
@@ -126,8 +130,10 @@ function favorites() {
               attend={Array.isArray(event.attend) ? event.attend : []}
               user={user}
             />
-          ))}
+          ))
+        )}
       </div>
+    </div>
     </>
   )
 }

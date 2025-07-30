@@ -37,6 +37,11 @@ Evently, kullanıcıların etkinlik oluşturabildiği, etkinlikleri beğenebildi
   - Etkinlikler ve kullanıcılar Firestore veritabanında saklanır
   - Beğeni (likes) ve diğer bilgiler gerçek zamanlı güncellenir
 
+- **Etkinliğe Katılma ve Katıldıklarım (Favorites):**
+  - Kullanıcılar etkinlik kartındaki "Katılıyorum" butonuna tıklayarak etkinliğe katılabilir.
+  - Sadece katıldığın etkinlikler, "Favorites" (Katıldıklarım) sayfasında listelenir.
+  - Katıldığın etkinliklerin sayısını ve listesini görebilirsin.
+
 ## Kurulum
 
 1. **Projeyi klonla:**

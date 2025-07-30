@@ -31,6 +31,9 @@ function ProfilePage() {
         const handleEventAdd = () => {
           navigator('/eventAdd');
         };
+        const Favorites = ()=>{
+          navigator('/favorites');
+        };
 
   const [profile, setProfile] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
@@ -93,13 +96,13 @@ function ProfilePage() {
             <h1 onClick={handleRefresh}>Evently</h1>
             <input className="search"  placeholder={t("Search by location or event name")} type="text" />
             <button className='searchButton'>{t("Search")}</button>
-            <div className='dropdown'>
-                <ul>
-                  <li><a onClick={handleProfile}>{t("Profile")}</a></li>
-                  <li><a onClick={handleEventAdd}>{t("Create Event")}</a></li>
-                  <li><a onClick={handleLogOut}>{t("Log Out")}</a></li>
-                </ul>
-            </div>
+             <ul>
+            <li style={{marginLeft:'33%'}}><a onClick={handleProfile}>{t("Profile")}</a></li>
+            <li><a onClick={Favorites}>{t("Favorites")}</a></li>
+            <li><a onClick={handleEventAdd}>{t("Create Event")}</a></li>
+            <li><a onClick={handleLogOut}>{t("Log Out")}</a></li>
+            
+          </ul>
     </div>
   
     
