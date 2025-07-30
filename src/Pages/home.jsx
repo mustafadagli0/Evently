@@ -16,6 +16,9 @@ function home() {
     i18n.changeLanguage(lang);
     console.log("Dil değiştirildi:", lang);
   };
+  const Favorites = () => {
+    navigator('/favorites');
+  };
 
   const navigator = useNavigate();
 
@@ -86,7 +89,7 @@ function home() {
       <div className="navbar">
         <img className='logo' src={Favicon} alt="resim bulunamadı" />
         <h1 onClick={handleRefresh}>Evently</h1>
-        <form onSubmit={handleSearch} style={{ display: 'inline' }}>
+        <form onSubmit={handleSearch} style={{ display: 'inline',width: '40%' }}>
           <input
             className="search"
             placeholder={t("Search by location or event name")}
@@ -96,13 +99,15 @@ function home() {
           />
           <button className='searchButton' type="submit">{t("Search")}</button>
         </form>
-        <div className='dropdown'>
+        
           <ul>
-            <li><a onClick={handleProfile}>{t("Profile")}</a></li>
+            <li style={{marginLeft:'33%'}}><a onClick={handleProfile}>{t("Profile")}</a></li>
+            <li><a onClick={Favorites}>{t("Favorites")}</a></li>
             <li><a onClick={handleEventAdd}>{t("Create Event")}</a></li>
             <li><a onClick={handleLogOut}>{t("Log Out")}</a></li>
+            
           </ul>
-        </div>
+     
       </div>
 
       <div className="eventsContainer">

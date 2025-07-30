@@ -8,7 +8,7 @@ import ProfilePage from './Pages/ProfilePage';
 import EventAdd from './Pages/eventAdd';
 import ForgotPassword from './Pages/forgotPassword';
 import CreateAccount from './Pages/createAccount';
-
+import Favorites from './Pages/favorites';
 function App() {
   return (
     <>
@@ -21,6 +21,7 @@ function App() {
           <Route path="/createAccount" element={<CreateAccount/>} />
           <Route path="/profile" element={<ProfilePage/>} />
           <Route path="/eventAdd" element={<EventAdd/>} />
+          <Route path='/favorites' element={<Favorites/>}/>
         </Routes>
       </Router>
     </>

@@ -38,7 +38,6 @@ body{
 .searchButton{
     height: 40px;
     width: 100px;
-    margin-left: 10px;
     align-items: center;
     text-align: center;
     justify-content: center;
@@ -46,24 +45,24 @@ body{
     padding-bottom: auto;     
 }
 
-.dropdown{
-    display: flex;
-    margin-left: 16%;
+ul{
+    width: 30%;
+    margin-right: -10%;
 }
 
-.dropdown ul li{
+ul li{
     display: inline-block;
-    margin-left: 25px;
     list-style: none;
     font-size: medium;
     color: white;
+    margin-left: 3%;
 }
-.dropdown ul li a{
+ul li a{
     word-spacing: 0.01em;
     color: rgb(191, 191, 191);
     transition: 0.5s;
 }
-.dropdown ul li a:hover{
+ul li a:hover{
     color: white;
     cursor: pointer;
 }
@@ -74,7 +73,7 @@ body{
   flex-direction: column;
   align-items: center;            /* YATAYDA ortaya hizalar */
   justify-content: center;        /* DİKEYDE ortaya hizalar */
-  padding-top: 100px;             /* Navbar yüksekliği kadar boşluk */
+  padding-top: 110px;             /* Navbar yüksekliği kadar boşluk */
   width: 1000px;
   gap: 32px;       
   margin-left: 35%;
