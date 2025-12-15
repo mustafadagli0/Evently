@@ -9,6 +9,8 @@ import EventAdd from './Pages/eventAdd';
 import ForgotPassword from './Pages/forgotPassword';
 import CreateAccount from './Pages/createAccount';
 import Favorites from './Pages/favorites';
+import LoginAdminPannel from './Pages/loginAdminPannel';
+import Adminpannel from './Pages/admin';
 function App() {
   return (
     <>
@@ -22,6 +24,8 @@ function App() {
           <Route path="/profile" element={<ProfilePage/>} />
           <Route path="/eventAdd" element={<EventAdd/>} />
           <Route path='/favorites' element={<Favorites/>}/>
+          <Route path='/loginAdminPannel' element={<LoginAdminPannel/>}/>
+          <Route path='/admin' element={<Adminpannel/>}/>
         </Routes>
       </Router>
     </>

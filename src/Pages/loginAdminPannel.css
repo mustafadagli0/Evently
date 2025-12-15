@@ -3,9 +3,12 @@ body{
     padding: 0;
 }
 .page{
-    margin: auto;
-    padding: 2rem 1rem;
+    min-height: 100vh;          /* tüm ekran yüksekliği */
     display: flex;
+    align-items: center;        /* dikey ortalama */
+    justify-content: center;    /* yatay ortalama */
+    padding: 0;
+    margin: 0;
 }
 .header{
     display: flex;
@@ -24,9 +27,9 @@ body{
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.553);    
 }
 .login{
-    display: flex;
-    margin-top: 25px;
-    margin-left: 50px;
+
+    margin-right: 25px;
+    margin-left: 600px;
     width: 450px;
     height: 650px;
     background-color: aliceblue;

@@ -50,6 +50,9 @@ const handleGoogleLogin = async (e) => {
     console.error("Google ile giriş başarısız:", error);
   }
 };
+const handleAdminPannel = () =>{
+    navigator('/loginAdminPannel');
+}
 
 
 
@@ -86,6 +89,10 @@ const handleGoogleLogin = async (e) => {
                     <button className='loginGoogleButton' 
                     onClick={handleGoogleLogin}
                     type='submit'>{t("Sign in With Google")}</button>
+                    <button className='loginGoogleButton' 
+                    onClick={handleAdminPannel}
+                    type='submit'>{t("Login Admin Pannel")}</button>
+                    
     
                     
                 </form>
