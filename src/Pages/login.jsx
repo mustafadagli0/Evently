@@ -92,9 +92,6 @@ const handleAdminPannel = () =>{
                     <button className='loginGoogleButton' 
                     onClick={handleAdminPannel}
                     type='submit'>{t("Login Admin Pannel")}</button>
-                    
-    
-                    
                 </form>
             </div>
         </div>
